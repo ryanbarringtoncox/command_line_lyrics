@@ -1,9 +1,10 @@
 #!/usr/bin/python
 from lxml import html
-import requests
+import requests,sys
 
 #url="http://www.songlyrics.com/mark-mulcahy/i-taketh-away-lyrics/"
 url="http://www.songlyrics.com/mark-mulcahy/the-rabbit-lyrics/"
+#url="http://www.songlyrics.com/mark-mulcahy/poison-candy-heart-lyrics/"
 target='//p[@id="songLyricsDiv"]/text()'
 # remove strings like '(pre-chorus)'
 remove_paren_words=True
@@ -27,6 +28,11 @@ f=open(filename,"w")
 
 # grab desired dom element
 lyrics = tree.xpath(target)
+if debug: print str(len(lyrics)) + " lines found in element" 
+if len(lyrics) == 0:
+  print "Damn.  This is one of those annoyingly empthy urls."
+  print "  ...exiting"
+  sys.exit(2)
 
 # remove punctuation chars
 for line in lyrics:

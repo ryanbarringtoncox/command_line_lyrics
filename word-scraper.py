@@ -2,14 +2,16 @@
 from lxml import html
 import requests,sys
 
+debug=True
 #url="http://www.songlyrics.com/mark-mulcahy/i-taketh-away-lyrics/"
-url="http://www.songlyrics.com/mark-mulcahy/the-rabbit-lyrics/"
+#url="http://www.songlyrics.com/mark-mulcahy/the-rabbit-lyrics/"
 #url="http://www.songlyrics.com/mark-mulcahy/poison-candy-heart-lyrics/"
+url=sys.argv[1]
+if debug: print "url is " + url
 target='//p[@id="songLyricsDiv"]/text()'
 # remove strings like '(pre-chorus)'
 remove_paren_words=True
 remove_verse_lines=True #remove lines that start with string "verse"
-debug=True
 
 #get (part of string) between parens and remove
 def sliceOutParens(str):

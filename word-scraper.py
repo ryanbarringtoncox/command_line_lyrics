@@ -4,7 +4,6 @@ from lxml import html
 from urls import urls
 
 debug=False
-chars_to_omit=['"','\'','.',',','\n']
 
 for url in urls:
   if debug: print "url is " + url
@@ -27,7 +26,7 @@ for url in urls:
   slugs=url.split('/')
   filename=slugs[len(slugs)-1]+".txt"
   if debug: print "lyrics will be written to " + filename
-  f=open(filename,"w")
+  f=open("songs/"+filename,"w")
 
   # grab desired dom element
   lyrics = tree.xpath(target)
@@ -41,9 +40,6 @@ for url in urls:
   for line in lyrics:
     if remove_paren_words: line=sliceOutParens(line)
     line=line.lower()
-    for char in chars_to_omit:
-      #line=line.replace(char,'')
-      line=line
     if line:
       if debug: print line,
       f.write(line)    

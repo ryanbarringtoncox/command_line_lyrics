@@ -4,6 +4,7 @@ from lxml import html
 from urls import urls
 
 debug=False
+chars_to_omit=['"','\'','.',',','\n']
 
 for url in urls:
   if debug: print "url is " + url
@@ -39,7 +40,10 @@ for url in urls:
   # remove punctuation chars
   for line in lyrics:
     if remove_paren_words: line=sliceOutParens(line)
-    line=line.replace('"','').replace('\'','').replace('.','').replace(',','').strip('\n').lower()
+    line=line.lower()
+    for char in chars_to_omit:
+      #line=line.replace(char,'')
+      line=line
     if line:
       if debug: print line,
       f.write(line)    

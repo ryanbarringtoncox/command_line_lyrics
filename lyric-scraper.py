@@ -3,6 +3,11 @@ import requests,sys
 from lxml import html
 debug=False
 
+#get (part of string) between parens and remove
+def sliceOutParens(str):
+  sub_str=str[str.find("("):str.find(")")+1]
+  return str.replace(sub_str,'')
+
 # validate args
 if len(sys.argv) != 2:
   sys.exit("usage: lyric-scraper http://www.songlyrics.com/mark-mulcahy/the-rabbit-lyrics/")
@@ -16,11 +21,6 @@ if debug: print "url is " + url
 target='//p[@id="songLyricsDiv"]/text()'
 # remove strings like '(pre-chorus)'
 remove_paren_words=True
-
-#get (part of string) between parens and remove
-def sliceOutParens(str):
-  sub_str=str[str.find("("):str.find(")")+1]
-  return str.replace(sub_str,'')
 
 # make sure it's a http://www.valid/url, grab page
 try:

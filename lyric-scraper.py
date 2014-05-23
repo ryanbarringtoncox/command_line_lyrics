@@ -9,6 +9,7 @@ if len(sys.argv) != 2:
 
 # get url
 url = sys.argv[1]
+url=url.rstrip('/')
 
 if debug: print "url is " + url
 # dom target, may change in time
@@ -31,13 +32,6 @@ except:
 tree = html.fromstring(page.text)
 if debug: print tree
 
-# split off trailing slash, bild filename
-url=url.rstrip('/')
-slugs=url.split('/')
-filename=slugs[len(slugs)-1]+".txt"
-if debug: print "lyrics will be written to " + filename
-f=open(filename,"w")
-
 # grab desired dom element
 lyrics = tree.xpath(target)
 if debug: print str(len(lyrics)) + " lines found in element" 
@@ -45,6 +39,12 @@ if len(lyrics) == 0:
   print "Url doesn't have songLyricsDiv with words"
   print "  ...exiting"
   sys.exit(2)
+
+# build filename and open
+slugs=url.split('/')
+filename=slugs[len(slugs)-1]+".txt"
+if debug: print "lyrics will be written to " + filename
+f=open(filename,"w")
 
 # remove punctuation chars
 for line in lyrics:

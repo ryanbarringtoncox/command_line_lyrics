@@ -12,7 +12,7 @@ It will scrape the song lyrics and write them to file-in-current-working-dir-lik
 Maybe you want to use this script in various directories.  I do.  You can use it anywhere, by adding it to your path like this -
 
     cd /usr/local/bin
-    sudo ln -s -s your/path/to/lyric-scraper/lyric-scraper.py ./lyric-scraper
+    sudo ln -s your/path/to/lyric-scraper/lyric-scraper.py ./lyric-scraper
     cd ~
     mkdir rolling-stones-lyrics
     cd rolling-stones-lyrics

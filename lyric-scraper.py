@@ -1,8 +1,13 @@
 #!/usr/bin/python
 import requests,sys
 from lxml import html
-
 debug=False
+
+# validate args
+if len(sys.argv) != 2:
+  sys.exit("usage: lyric-scraper http://www.songlyrics.com/mark-mulcahy/the-rabbit-lyrics/")
+
+# get url
 url = sys.argv[1]
 
 if debug: print "url is " + url
@@ -16,11 +21,17 @@ def sliceOutParens(str):
   sub_str=str[str.find("("):str.find(")")+1]
   return str.replace(sub_str,'')
 
-# grab webpage and get the text tree
-page = requests.get(url)
+# make sure it's a http://www.valid/url, grab page
+try:
+  page = requests.get(url)
+except:
+  sys.exit("Not a valid url.  Exiting...")
+
+# get the text tree
 tree = html.fromstring(page.text)
 if debug: print tree
 
+# split off trailing slash, bild filename
 url=url.rstrip('/')
 slugs=url.split('/')
 filename=slugs[len(slugs)-1]+".txt"
@@ -31,7 +42,7 @@ f=open(filename,"w")
 lyrics = tree.xpath(target)
 if debug: print str(len(lyrics)) + " lines found in element" 
 if len(lyrics) == 0:
-  print "Invalid url.  Or url contains no words in <div id='songLyricsDiv'></div>"
+  print "Url doesn't have songLyricsDiv with words"
   print "  ...exiting"
   sys.exit(2)
 

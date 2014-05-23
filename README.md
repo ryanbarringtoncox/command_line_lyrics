@@ -1,19 +1,10 @@
 Usage                                                                                                                                                                                
 =======
 
-For now, script assumes formatting of http://www.songlyrics.com/.  To rip lyrics just clone the repo and cd in.
+For now, script assumes formatting of http://www.songlyrics.com/.  To rip lyrics just clone the repo and cd in.  Then run the script with url arg -
 
-Copy and paste song choice urls into urls.py file list like this -
+    ./word-scraper.py http://www.songlyrics.com/mark-mulcahy/the-rabbit-lyrics/
 
-    urls = [
-      "http://www.songlyrics.com/mark-mulcahy/the-rabbit-lyrics/",
-      "http://www.songlyrics.com/rem/it-s-the-end-of-the-world-lyrics/",
-      "http://www.songlyrics.com/buddy-holly/rock-me-my-baby-lyrics/"
-    ]
+It will scrape the song lyrics and write them to current working dir to a text file that looks-like-this.txt.
 
-Then run the script -
-
-    ./word-scraper.py
-
-It will scrape the song lyrics and write them to files in songs dir.
 

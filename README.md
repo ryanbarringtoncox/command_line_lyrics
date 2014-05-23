@@ -3,7 +3,7 @@
 
 For now, script assumes formatting of http://www.songlyrics.com/.  To rip lyrics just clone the repo and cd in.  Then run the script with url arg -
 
-    git clone https://github.com/ryanbarringtoncox/lyric-scraper/blob/master/lyric-scraper.py
+    git clone https://github.com/ryanbarringtoncox/lyric-scraper
     cd lyric-scraper/
     ./lyric-scraper.py http://www.songlyrics.com/mark-mulcahy/the-rabbit-lyrics/
 

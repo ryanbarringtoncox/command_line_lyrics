@@ -1,7 +1,9 @@
 #!/usr/bin/python
-import requests,sys
+import requests, sys, urlparse
 from lxml import html
 debug=False
+# remove strings like '(pre-chorus)'
+remove_paren_words=True
 
 # get (part of string) between parens and remove
 def sliceOutParens(str):
@@ -12,15 +14,20 @@ def sliceOutParens(str):
 if len(sys.argv) != 2:
   sys.exit("usage: lyric-scraper http://www.songlyrics.com/mark-mulcahy/the-rabbit-lyrics/")
 
-# get url
+# get url and hostname
 url = sys.argv[1]
-url=url.rstrip('/')
+url = url.rstrip('/')
+hostname = urlparse.urlparse(url).hostname
 
 if debug: print "url is " + url
-# dom target, may change in time
-target='//p[@id="songLyricsDiv"]/text()'
-# remove strings like '(pre-chorus)'
-remove_paren_words=True
+
+# target dom element depends on site
+if hostname == 'www.metrolyrics.com':
+  target='//p[@class="verse"]/text()'
+elif hostname == 'www.songlyrics.com':
+  target='//p[@id="songLyricsDiv"]/text()'
+else:
+  sys.exit("Not a valid url.  Exiting...")
 
 # make sure it's a http://www.valid/url, grab page
 try:
@@ -42,7 +49,7 @@ if len(lyrics) == 0:
 
 # build filename and open
 slugs=url.split('/')
-filename=slugs[len(slugs)-1]+".txt"
+filename=slugs[len(slugs)-1].rstrip('.html')+".txt"
 if debug: print "lyrics will be written to " + filename
 f=open(filename,"w")
 

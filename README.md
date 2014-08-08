@@ -1,9 +1,8 @@
-# Usage                                                                                                                                                                                
 ## Intro
 
-I love the console.  I love listening to music while I hack.  I love get the lyrics to songs quickly.  It's a pain to fire up a browser, type a lyrics search in google, wade through the results, copy and paste.  Blah blah.
+I love the console.  I love listening to music while I hack.  I love getting the lyrics to songs quickly.  It's a pain to fire up a browser, type a lyrics search into google, wade through the results, copy and paste.  You get the idea.
 
-I spent a few hours trying out a few supposed lyric apis and had no luck.  Why not script what I've been doing so I can get lyrics quickly, from the command line, with one line?
+I spent a few hours trying out a few supposed lyric apis and had no luck.  I want lyrics quick and easy from the command line in one command.  Why not script what I've been doing?
 
 ## Dependencies
 

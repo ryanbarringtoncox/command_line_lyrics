@@ -30,15 +30,3 @@ And they'll stream by on the console for your reading pleasure.  You can also re
 
      ./lyric_scraper.py rolling stones hip shake lyrics > hip-shake.txt
 
-## Add to your path
-
-Maybe you want to use this script in various directories.  I do.  You can use it anywhere, by adding it to your path like this -
-
-    cd /usr/local/bin
-    sudo ln -s /your/path/to/lyric_scraper/lyric_scraper.py ./lyric_scraper
-    cd ~
-    mkdir rolling-stones-lyrics
-    cd rolling-stones-lyrics
-    ./lyric_scraper.py sweet jane velvet underground lyrics > sweet-jane.txt
-    ls
-    cat sweet-jane.txt

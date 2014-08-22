@@ -1,6 +1,6 @@
 ## Intro
 
-I love the console.  I love listening to music while I hack.  I love getting the lyrics to songs quickly.  It's a pain to fire up a browser, type a lyrics search into google, wade through the results, copy and paste.  You get the idea.
+I love the command line.  I love listening to music while I hack.  I love getting the lyrics to songs quickly.  It's a pain to fire up a browser, type a lyrics search into google, wade through the results, copy and paste.  You get the idea.
 
 I spent a few hours trying out a few supposed lyric apis and had no luck.  I want lyrics quick and easy from the command line in one command.  Why not script what I've been doing?
 
@@ -8,11 +8,11 @@ I spent a few hours trying out a few supposed lyric apis and had no luck.  I wan
 
 Depends on Python 2.7 (or later) and lxml library.
 
-    sudo pip install lxml
+    pip install lxml
 
 You'll also need Ruby and ruby-web search.
 
-    sudo gem install ruby-web-search
+    gem install ruby-web-search
 
 ## Install and scrape 
 

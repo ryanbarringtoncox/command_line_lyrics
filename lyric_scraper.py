@@ -26,6 +26,7 @@ def get_args_string():
   """get command line args and return as one concatted string"""
   if len(sys.argv) < 2: sys.exit("Need some args, man!")
   args = sys.argv[1:]
+  args.append('lyrics') #user shouldn't need to type the word lyrics
   return ' '.join(arg for arg in args)
 
 def get_domain(url):

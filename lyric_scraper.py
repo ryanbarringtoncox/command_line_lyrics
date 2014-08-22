@@ -1,6 +1,6 @@
 #!/usr/bin/python
 '''
-Still waiting on a good lyrics api.  Until then I still want lyrics from the console
+Still waiting on a good lyrics api.  Until then I still want lyrics from the console.
 Just run this script the way you'd do a google search for lyrics.  For example -
 
   ./lyric_scraper beatles in my life
@@ -59,3 +59,6 @@ if __name__ == '__main__':
       for line in lyrics:
         if line:
           print line.lstrip().rstrip()
+      if lyrics:
+        #print "found lyrics.  exiting..."
+        break #exit for loop if lyrics exist

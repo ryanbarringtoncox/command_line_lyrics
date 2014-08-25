@@ -23,10 +23,10 @@ Clone the repo and cd in -
 
 Run the script and pass in the words that you'd use to find lyrics online.  Some examples -
 
-    ./lyric_scraper.py the beatles in my life lyrics
-    ./lyric_scraper.py buddy holly peggy sue lyrics
+    ./lyric_scraper.py the beatles in my life 
+    ./lyric_scraper.py buddy holly peggy sue 
 
 And they'll stream by on the console for your reading pleasure.  You can also redirect them to a text file like this -
 
-     ./lyric_scraper.py rolling stones hip shake lyrics > hip-shake.txt
+     ./lyric_scraper.py rolling stones hip shake > hip-shake.txt
 

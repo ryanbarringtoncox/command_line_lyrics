@@ -3,7 +3,7 @@
 Still waiting on a good lyrics api.  Until then I still want lyrics from the console.
 Just run this script the way you'd do a google search for lyrics.  For example -
 
-  ./lyric_scraper beatles in my life
+  ./command_line_lyrics beatles in my life
 
 Will get them streaming by on the console.  Boosh!
 '''

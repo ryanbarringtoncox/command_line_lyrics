@@ -12,7 +12,11 @@ import requests, sys, urlparse, subprocess
 from lxml import html
 
 #domains and elements where lyrics live as key-val.  let's add some more if we can't get all the songs we want.
-useable_domains = {'www.metrolyrics.com':'//p[@class="verse"]/text()','www.songlyrics.com':'//p[@id="songLyricsDiv"]/text()'}
+useable_domains = {
+  'www.metrolyrics.com':'//p[@class="verse"]/text()',
+  'www.songlyrics.com':'//p[@id="songLyricsDiv"]/text()',
+  'www.lyricsmania.com':'//div[@class="lyrics-body"]/text()'
+  }
 
 def is_valid_url(url):
   """check for page and return it as object if valid"""
@@ -46,11 +50,13 @@ if __name__ == '__main__':
   #look for useable domains in url list
   useable_urls=[]
   for url in url_list:
+    #print url
     domain = get_domain(url) 
     if domain in useable_domains:
       useable_urls.append(url)
 
   #check urls for validity and get lyrics if possible
+  lyrics = None
   for url in useable_urls:
     page = is_valid_url(url)
     if page: 
@@ -61,5 +67,8 @@ if __name__ == '__main__':
         if line:
           print line.lstrip().rstrip()
       if lyrics:
-        #print "found lyrics.  exiting..."
+        #print "found lyrics from " + url + " .  exiting..."
         break #exit for loop if lyrics exist
+   
+  if not lyrics: 
+    print "sorry, bud.  couldn't find that one : ("

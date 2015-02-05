@@ -29,5 +29,5 @@ Run the script and pass in the words that you'd use to find lyrics online.  Some
 
 And they'll stream by on the console for your reading pleasure.  You can also redirect them to a text file like this -
 
-    ./command_line_lyrics.py rolling stones hip shake > hip-shake.txt
+    ./command_line_lyrics.py rolling stones shine a light > shine-a-light.txt
 

@@ -18,8 +18,8 @@ You'll also need Ruby and ruby-web search.
 
 Clone the repo and cd in -
 
-    git clone https://github.com/ryanbarringtoncox/lyric_scraper
-    cd lyric_scraper/
+    git clone https://github.com/ryanbarringtoncox/command_line_lyrics
+    cd command_line_lyrics/
 
 Run the script and pass in the words that you'd use to find lyrics online.  Some examples -
 

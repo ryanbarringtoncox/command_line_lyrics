@@ -15,7 +15,8 @@ from lxml import html
 useable_domains = {
   'www.metrolyrics.com':'//p[@class="verse"]/text()',
   'www.songlyrics.com':'//p[@id="songLyricsDiv"]/text()',
-  'www.lyricsmania.com':'//div[@class="lyrics-body"]/text()'
+  'www.lyricsmania.com':'//div[@class="lyrics-body"]/text()',
+  'www.azlyrics.com':'//div[@style="margin-left:10px;margin-right:10px;"]/text()'
   }
 
 def is_valid_url(url):

@@ -39,6 +39,18 @@ def get_domain(url):
   url = url.rstrip('/')
   return urlparse.urlparse(url).hostname
 
+def trim_lyrics(lyrics):
+  """take list of lyric lines, trims beginning empty lines and returns"""
+  santized_lyrics = []
+  not_found_words = True
+  for line in lyrics:
+    if not_found_words and line in ['\n','\r\n']:
+      continue
+    else:
+      not_found_words = False
+      santized_lyrics.append(line)
+  return santized_lyrics
+
 if __name__ == '__main__':
    
   #get args as string, call ruby script, get list of google search results urls
@@ -64,6 +76,10 @@ if __name__ == '__main__':
       tree = html.fromstring(page.text)
       target = useable_domains[get_domain(url)]
       lyrics = tree.xpath(target)
+      if lyrics:
+        lyrics = trim_lyrics(lyrics) #trims empty lines from beginning
+        reversed_lyrics = trim_lyrics(lyrics[::-1]) #trims empty lines from end
+        lyrics = reversed_lyrics[::-1] #reverses reversed lyrics
       for line in lyrics:
         if line:
           print line.lstrip().rstrip()

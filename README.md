@@ -13,7 +13,7 @@ You are encouraged to use virtualenv
     cd command_line_lyrics/
     virtualenv env
     source env/bin/activate
-    pip install lxml requests 
+    pip install lxml requests coverage
 
 You'll also need Ruby and ruby-web search.
 
@@ -23,6 +23,7 @@ You'll also need Ruby and ruby-web search.
 
 Run the script and pass in the words that you'd use to find lyrics online.  **No punctuation please!** Some examples -
 
+    source env/bin/activate #if you haven't already
     ./command_line_lyrics.py the beatles in my life 
     ./command_line_lyrics.py blur tender
     ./command_line_lyrics.py buddy holly peggy sue 
@@ -35,8 +36,7 @@ And they'll stream by on the console for your reading pleasure.  You can also re
 
 100% Statement Coverage is the goal here.  You can run tests with Python's wonderful coverage module.
 
-    pip install coverage
     coverage run functional_test.py; coverage html; 
     ./full_test_coverage.s
 
-After running each test script, check out the generated html file in your browser in *./command_line_lyrics/htmlcov/command_line_lyrics.html *
+After running each test script, check out the generated html file in your browser.  It's beautiful at lives here: ./command_line_lyrics/htmlcov/command_line_lyrics.html 

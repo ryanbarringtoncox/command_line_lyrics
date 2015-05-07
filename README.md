@@ -37,6 +37,6 @@ And they'll stream by on the console for your reading pleasure.  You can also re
 100% Statement Coverage is the goal here.  You can run tests with Python's wonderful coverage module.
 
     coverage run functional_test.py; coverage html; 
-    ./full_test_coverage.s
+    ./full_test_coverage.sh
 
 After running each test script, check out the generated html file in your browser.  It's beautiful at lives here: ./command_line_lyrics/htmlcov/command_line_lyrics.html 

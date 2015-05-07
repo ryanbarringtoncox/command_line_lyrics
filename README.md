@@ -4,24 +4,24 @@ I love the command line.  I love listening to music while I hack.  I love gettin
 
 I spent a few hours trying out a few supposed lyric apis and had no luck.  I want lyrics quick and easy from the command line in one command.  Why not script what I've been doing?
 
-## Dependencies
+## Install
 
-Depends on Python 2.7 (or later) and lxml library.
+You are encouraged to use virtualenv
 
-    pip install lxml
+    sudo pip install virtualenv
+    git clone https://github.com/ryanbarringtoncox/command_line_lyrics
+    cd command_line_lyrics/
+    virtualenv env
+    source env/bin/activate
+    pip install lxml requests 
 
 You'll also need Ruby and ruby-web search.
 
     gem install ruby-web-search
 
-## Install and scrape 
+## Grab lyrics from the web! 
 
-Clone the repo and cd in -
-
-    git clone https://github.com/ryanbarringtoncox/command_line_lyrics
-    cd command_line_lyrics/
-
-Run the script and pass in the words that you'd use to find lyrics online.  Some examples -
+Run the script and pass in the words that you'd use to find lyrics online.  **No punctuation please!** Some examples -
 
     ./command_line_lyrics.py the beatles in my life 
     ./command_line_lyrics.py blur tender

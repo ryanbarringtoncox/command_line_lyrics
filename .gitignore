@@ -2,4 +2,6 @@
 *.txt
 *.pyc
 env
-
+.DS_Store
+.coverage
+htmlcov/

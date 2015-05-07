@@ -6,6 +6,9 @@ Just run this script the way you'd do a google search for lyrics.  For example -
   ./command_line_lyrics beatles in my life
 
 Will get them streaming by on the console.  Boosh!
+
+PLEASE DO NOT include double/single quotes or other puncuation in your search string.  Bash doesn't like that.  It will fail.
+The eventual goal is to sanitize this on frontend GUI.
 '''
 
 import requests, sys, urlparse, subprocess
@@ -20,27 +23,25 @@ useable_domains = {
   }
 
 def is_valid_url(url):
-  """check for page and return it as object if valid"""
+  """Check for page and return as object if valid."""
   page = requests.get(url)
   if page.status_code != 200:
     return None
   else:
     return page 
 
-def get_args_string():
-  """get command line args and return as one concatted string"""
-  if len(sys.argv) < 2: sys.exit("Need some args, man!")
-  args = sys.argv[1:]
+def get_args_string(args):
+  """Get command line args and return as one concatted string."""
   args.append('lyrics') #user shouldn't need to type the word lyrics
   return ' '.join(arg for arg in args)
 
 def get_domain(url):
-  """take full url and return domain"""
+  """Take full url and return domain."""
   url = url.rstrip('/')
   return urlparse.urlparse(url).hostname
 
 def trim_lyrics(lyrics):
-  """take list of lyric lines, trims beginning empty lines and returns"""
+  """Take list of lyric lines, trim beginning empty lines and returns."""
   santized_lyrics = []
   not_found_words = True
   for line in lyrics:
@@ -54,7 +55,10 @@ def trim_lyrics(lyrics):
 if __name__ == '__main__':
    
   #get args as string, call ruby script, get list of google search results urls
-  args_string = get_args_string()
+  if len(sys.argv) < 2:
+    sys.exit("Need some args, man!")
+  args = sys.argv[1:]
+  args_string = get_args_string(args)
   cmd = "./google_search.rb " + args_string
   p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
   ruby_response,errors = p.communicate()

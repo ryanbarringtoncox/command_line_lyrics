@@ -3,6 +3,15 @@ import unittest, command_line_lyrics
 
 class TestLyricScraper(unittest.TestCase):
 
+  def test_print_lyrics(self):
+    useable_urls = ['http://www.azlyrics.com/lyrics/beatles/inmylife.html', 'http://www.metrolyrics.com/in-my-life-lyrics-beatles.html']
+    command_line_lyrics.print_lyrics(useable_urls)
+
+  def test_find_useable_urls(self):
+    urls = ['www.metrolyrics.com/a/path', 'http://trailofsparks.org', 'somefakestuff.com']
+    useable_urls = command_line_lyrics.find_useable_urls(urls)
+    self.assertGreater(1,len(useable_urls))
+
   def test_trim_lyrics(self):
     lyrics_oracle = ["Here are lyrics.\n","That are not trimmed.\n","La la la la.\n","\n","\n"]
     untrimmed_lyrics_list = ["\n","\n", "Here are lyrics.\n","That are not trimmed.\n","La la la la.\n","\n","\n"]

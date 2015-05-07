@@ -52,27 +52,18 @@ def trim_lyrics(lyrics):
       santized_lyrics.append(line)
   return santized_lyrics
 
-if __name__ == '__main__':
-   
-  #get args as string, call ruby script, get list of google search results urls
-  if len(sys.argv) < 2:
-    sys.exit("Need some args, man!")
-  args = sys.argv[1:]
-  args_string = get_args_string(args)
-  cmd = "./google_search.rb " + args_string
-  p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
-  ruby_response,errors = p.communicate()
-  url_list=ruby_response.split('\n')
-
-  #look for useable domains in url list
+def find_useable_urls(url_list):
+  """Look for useable domains in url list."""
   useable_urls=[]
   for url in url_list:
     #print url
     domain = get_domain(url) 
     if domain in useable_domains:
       useable_urls.append(url)
+  return useable_urls
 
-  #check urls for validity and get lyrics if possible
+def print_lyrics(useable_urls):
+  """Check urls for validity and print lyrics if possible."""
   lyrics = None
   for url in useable_urls:
     page = is_valid_url(url)
@@ -90,6 +81,22 @@ if __name__ == '__main__':
       if lyrics:
         #print "found lyrics from " + url + " .  exiting..."
         break #exit for loop if lyrics exist
+
+    if not lyrics: 
+      print "sorry, bud.  couldn't find that one : ("
+
+if __name__ == '__main__':
    
-  if not lyrics: 
-    print "sorry, bud.  couldn't find that one : ("
+  #get args as string, call ruby script, get list of google search results urls
+  if len(sys.argv) < 2:
+    sys.exit("Need some args, man!")
+  args = sys.argv[1:]
+  args_string = get_args_string(args)
+  cmd = "./google_search.rb " + args_string
+  p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE)
+  ruby_response,errors = p.communicate()
+  url_list=ruby_response.split('\n')
+
+  useable_urls = find_useable_urls(url_list)
+  #print useable_urls
+  print_lyrics(useable_urls) 

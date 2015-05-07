@@ -31,3 +31,12 @@ And they'll stream by on the console for your reading pleasure.  You can also re
 
     ./command_line_lyrics.py rolling stones shine a light > shine-a-light.txt
 
+## Test Coverage
+
+100% Statement Coverage is the goal here.  You can run tests with Python's wonderful coverage module.
+
+    pip install coverage
+    coverage run functional_test.py; coverage html; 
+    ./full_test_coverage.s
+
+After running each test script, check out the generated html file in your browser in *./command_line_lyrics/htmlcov/command_line_lyrics.html *

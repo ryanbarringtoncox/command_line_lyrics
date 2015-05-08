@@ -39,4 +39,4 @@ And they'll stream by on the console for your reading pleasure.  You can also re
     coverage run functional_test.py; coverage html; 
     ./full_test_coverage.sh
 
-After running each test script, check out the generated html file in your browser.  It's beautiful at lives here: ./command_line_lyrics/htmlcov/command_line_lyrics.html 
+After running each test script, check out the generated html file in your browser.  It's beautiful and lives here: ./command_line_lyrics/htmlcov/command_line_lyrics.html 
